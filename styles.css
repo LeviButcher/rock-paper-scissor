@@ -56,14 +56,28 @@ header > h1{
 
 #choices > .choiceCard {flex: 1;}
 
-#choices > h2{
+#choices > h2{width: 100%;}
+
+#choices > div:nth-child(2){
   width: 100%;
+}
+
+button {
+  padding: 2em;
+  border: 1px solid black;
+  background-color: #efbc5f;
+  font-weight: bold;
 }
 
 .choiceCard {
   margin: 0 1em;
   padding: 2em;
   border: 1px solid black;
+}
+
+.choosen {
+  background-color: lightblue;
+  
 }
 
 footer{
