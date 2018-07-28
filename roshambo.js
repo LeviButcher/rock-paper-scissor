@@ -1,21 +1,26 @@
-const playerScore = 0;
-const aiScore = 0;
+let playerScore = 0;
+let aiScore = 0;
 
 window.onload = () => {
+  //In case something has already been choosen
+
   const rockChoice = document.querySelector('#rock');
   rockChoice.addEventListener('click', () => {
+    clearChoosen();
     console.log(rockChoice);
     rockChoice.classList.add('choosen');
   });
 
   const paperChoice = document.querySelector('#paper');
   paperChoice.addEventListener('click', () => {
+    clearChoosen();
     console.log(paperChoice);
     paperChoice.classList.add('choosen');
   });
 
   const scissorsChoice = document.querySelector('#scissors');
   scissorsChoice.addEventListener('click', () => {
+    clearChoosen();
     console.log(scissorsChoice);
     scissorsChoice.classList.add('choosen');
   });
@@ -28,11 +33,14 @@ window.onload = () => {
     let computerChoice = computerPlay();
     let result = playRound(choiceValue, computerChoice);
     setResults(result);
+    choosen.classList.remove('choosen');
   });
 };
 
 function setResults(result) {
   const info = document.querySelector('#infoMessage');
+  const scores = document.querySelector('#scores');
+  console.log(result);
   if (result == 1) {
     playerScore++;
     info.textContent = 'You have won';
@@ -42,8 +50,15 @@ function setResults(result) {
   } else {
     info.textContent = 'tied, try again';
   }
+  
+  scores.textContent = `${playerScore} - ${aiScore}`;
 }
 
+function clearChoosen() {
+  const alreadyChoosen = document.querySelector('.choosen');
+  if (alreadyChoosen)
+    alreadyChoosen.classList.remove('choosen');
+}
 
 //Randomly returns Rock, Paper, Scissor
 function computerPlay() {
