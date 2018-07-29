@@ -9,22 +9,26 @@ header {
   -ms-align-items: center;
   align-items: center;
   padding: 1em;
-  background-color: gray;
+  background-color: #4B6554;
+  color: #65E58E;
   text-align: center;
+  box-shadow: 0px 13px 20px -10px black;
+  z-index: 10;
+  position: relative;
 }
 
 header > h1{
   flex: 1;
 }
 
-#aiChoice{
-  display: hidden;
-}
-
 #scoreboard{
   padding: 1em;
-  background-color: lightblue;
+  background-color: #2D653F;
+  color: #65E58E;
   text-align: center;
+  box-shadow: 0px 13px 20px -10px black;
+  z-index: 9;
+  position: relative;
 }
 
 #scoreboard > p{
@@ -34,9 +38,11 @@ header > h1{
 
 #vs{
   display: flex;
-  padding: 1em;
-  background-color: #ec7c7c;
+  padding: 2em;
+  background-color: #ADE9C0;
+  color: #2D653F;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -44,9 +50,23 @@ header > h1{
   flex: 1;
 }
 
+#vs > h2{
+  font-size: 40pt;
+  text-shadow: 2px 2px 4px black;
+}
+
+#vs > div{
+  height: 100px;
+  width: 100px;
+}
+
+#vs img{
+  display: none;
+}
+
 #choices{
   display: flex;
-  background-color: #75d675;
+  background-color: #ADE9C0;
   text-align: center;
   height: 500px;
   align-items: center;
@@ -65,23 +85,78 @@ header > h1{
 button {
   padding: 2em;
   border: 1px solid black;
-  background-color: #efbc5f;
+  background-color: #65E58E;
   font-weight: bold;
+  box-shadow: 5px 13px 20px -10px black;
+  z-index: 9;
+  position: relative;
+}
+
+button:focus{
+  outline: none;
+  border: 3px solid black;
+  background-color: #4EB26E;
 }
 
 .choiceCard {
   margin: 0 1em;
   padding: 2em;
   border: 1px solid black;
-  background-color: #efbc5f;
+  background-color: #65E58E;
+  transition: all 0.2s;
+  box-shadow: 5px 13px 20px -5px black;
+  z-index: 9;
+  position: relative;
+  height: 100px;
+  width: 100px;
+}
+
+.choiceCard img{
+  width: 100px;
+  height: 100px;
 }
 
 .choosen {
-  background-color: lightblue;
-
+  background-color: #4FB26E;
+  border: 3px solid black;
+  padding: 1em;
 }
 
 footer{
   padding: 1em;
-  background-color: #bd5ebd;
+  background-color: #4B6554;
+  color: #65E58E;
+}
+
+@media only screen and (max-width: 600px) {
+  img{
+    height: 50px!important;
+    width: 50px;
+  }
+  .choiceCard{
+    height: 50px!important;
+    width: 50px;
+    padding: 1em;
+  }
+  .choiceCard img{
+    height: 50px!important;
+    width: 50px;
+  }
+  .choosen{
+    padding: 2em;
+  }
+  #choices{
+    height: 300px;
+  }
+}
+@media only screen and (max-width: 400px){
+  #vs > h2{
+    font-size: 20pt;
+  }
+  #choices{
+    height: 250px;
+  }
+  .choosen{
+    padding: 0em;
+  }
 }

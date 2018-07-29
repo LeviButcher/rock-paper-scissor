@@ -1,9 +1,10 @@
 let playerScore = 0;
 let aiScore = 0;
+const rockImagePath = './images/rock.png';
+const sissorsImagePath = './images/scissors.png';
+const paperImagePath = './images/paper.png';
 
 window.onload = () => {
-  //In case something has already been choosen
-
   const rockChoice = document.querySelector('#rock');
   rockChoice.addEventListener('click', () => {
     clearChoosen();
@@ -33,10 +34,13 @@ window.onload = () => {
     let computerChoice = computerPlay();
     let result = playRound(choiceValue, computerChoice);
     setResults(result);
-    choosen.classList.remove('choosen');
+    setVsImages(choiceValue, computerChoice);
+    clearChoosen();
   });
 };
 
+/* Sets the infoMessage to the appropriate message
+    depending on the results passed in and updates scoreboard*/
 function setResults(result) {
   const info = document.querySelector('#infoMessage');
   const scores = document.querySelector('#scores');
@@ -50,14 +54,43 @@ function setResults(result) {
   } else {
     info.textContent = 'tied, try again';
   }
-  
+
   scores.textContent = `${playerScore} - ${aiScore}`;
 }
 
+//Clears choosen class from any elements
 function clearChoosen() {
   const alreadyChoosen = document.querySelector('.choosen');
   if (alreadyChoosen)
     alreadyChoosen.classList.remove('choosen');
+}
+
+function setVsImages(playerChoice, aiChoice) {
+  const playerImg = document.querySelector('#playerChoice');
+  const aiImg = document.querySelector('#aiChoice');
+  console.log(playerImg.src);
+  setImage(playerImg, playerChoice);
+  setImage(aiImg, aiChoice);
+}
+
+function setImage(element, type) {
+  switch (type){
+    case 'ROCK':
+      element.src = rockImagePath;
+      element.style = 'display: inline';
+      break;
+    case 'SCISSORS':
+      element.src = sissorsImagePath;
+      element.style = 'display: inline';
+      break;
+    case 'PAPER':
+      element.src = paperImagePath;
+      element.style = 'display: inline';
+      break;
+    default:
+      console.err(type);
+      break;
+  }
 }
 
 //Randomly returns Rock, Paper, Scissor
